@@ -97,4 +97,4 @@ if st.button("3. 번역 분석"):
 # 세션 초기화 버튼
 if st.button("새 문장 생성"):
     st.session_state["english_sentence"] = generate_english_sentence()
-    st.experimental_rerun()
+    st.rerun()

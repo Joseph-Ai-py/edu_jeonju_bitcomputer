@@ -5,7 +5,7 @@ import json
 import time
 
 # 기본 API 설정
-API_KEY = "a2cff297c89a4442b8bd0383ff8a73c2"
+API_KEY = "your api key"
 BASE_URL = "https://openapi.its.go.kr:9443/cctvInfo"
 
 def fetch_cctv_info(min_x, max_x, min_y, max_y):

@@ -3,7 +3,7 @@ import google.generativeai as genai
 import re
 
 # Google Generative AI 설정
-GOOGLE_API_KEY = "AIzaSyAsTk4zj6gmewYEdZnOBhjChDW2dkb6dwk"  # 여기에 Google API 키 입력
+GOOGLE_API_KEY = "your api key"  # 여기에 Google API 키 입력
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # 섹션별 분석 결과를 포맷팅하는 함수

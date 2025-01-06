@@ -4,27 +4,24 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from langchain_community.document_loaders.csv_loader import CSVLoader
 
-# CSV 파일 경로
-loader = CSVLoader(
-    file_path="loder\data\BostonHousing.csv",
-    csv_args={
-        "delimiter": ",",  # 구분자 tab로 나눌 때는 \t를 사용한다.
-        "quotechar": '"',  # 인용 부호 문자
-        "fieldnames": [
-            "crim","zn","indus","chas","nox","rm","age","dis","rad","tax","ptratio","b","lstat","medv",
-        ],  # 필드 이름
-    },
-)
+from langchain_community.document_loaders.csv_loader import UnstructuredCSVLoader
 
-# 데이터 로드
+# 비구조화 CSV 로더 인스턴스 생성
+loader = UnstructuredCSVLoader(file_path="loder\data\BostonHousing.csv", mode="elements")
+
+# 문서 로드
 docs = loader.load()
+print(len(docs))
+# 첫 번째 문서의 HTML 텍스트 메타데이터 출력
+print(docs[0].metadata["text_as_html"])
 
 with open("loder\SUB\RESULT\CSVLOADER_BOSTONHOUSING_RESULT.txt", "w", encoding="utf-8") as file:
-    for doc in docs[:10]:
-        row = doc.page_content.split('\n')
+    for doc in docs:
+        row = doc.metadata["text_as_html"].split('<tr>')
+        print(len(row))
         row_str = '<row>'
 
-        for element in row:
+        for element in row[:12]:
             splitted_element = element.split(':')
             value = splitted_element[-1]
             col = ".".join(splitted_element[:-1])

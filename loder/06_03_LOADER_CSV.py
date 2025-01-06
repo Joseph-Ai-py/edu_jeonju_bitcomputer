@@ -21,7 +21,7 @@ with open("loder\SUB\RESULT\CSVLOADER_BOSTONHOUSING_RESULT.txt", "w", encoding="
         print(len(row))
         row_str = '<row>'
 
-        for element in row[:12]:
+        for element in row[:12]: # 12개의 엘리먼트만 추출
             splitted_element = element.split(':')
             value = splitted_element[-1]
             col = ".".join(splitted_element[:-1])
